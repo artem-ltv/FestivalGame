@@ -7,6 +7,7 @@ namespace Festival
     {
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private float _moveSpeed;
+        [SerializeField] private float _jumpForce;
 
         private Rigidbody _rigidbody;
 
@@ -23,6 +24,11 @@ namespace Festival
         public void Move(Vector3 direction)
         {
             _rigidbody.velocity = Vector3.ClampMagnitude(direction, 1) * _moveSpeed;
+        }
+
+        public void Jump()
+        {
+            _rigidbody.velocity = new Vector3(0f, _jumpForce, 0f);
         }
 
         public void Stop()

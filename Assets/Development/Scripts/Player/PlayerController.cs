@@ -6,6 +6,7 @@ namespace Festival
     public class PlayerController : MonoBehaviour
     {
         private PlayerMovement _playerMovement;
+        [SerializeField]private bool _isGround;
 
         private void Start()
         {
