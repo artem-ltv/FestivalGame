@@ -6,7 +6,9 @@ namespace Festival
     public class MeteoriteMagic : MonoBehaviour
     {
         [SerializeField] private AimmingMouse _aimming;
+        [SerializeField] private Meteorite _meteorite;
 
+        private float _heightSpawnMeteorite = 5f;
         private bool _isUsing = false;
 
         private void Update()
@@ -34,9 +36,14 @@ namespace Festival
 
         private void SummonMeteorite()
         {
-            Vector3 mousePosition = _aimming.GetAimCoordinates();
             _isUsing = false;
-            Debug.Log("SummonMeteorit");
+
+            Vector3 aimCoordinates = _aimming.GetAimCoordinates();
+            Vector3 spawnMeteorite = new Vector3(aimCoordinates.x, aimCoordinates.y + _heightSpawnMeteorite, aimCoordinates.z);
+
+            Meteorite newMeteorite = Instantiate(_meteorite, spawnMeteorite, Quaternion.identity);
+            newMeteorite.Initialize(_heightSpawnMeteorite);
+            newMeteorite.Fall();
         }
     }
 }
