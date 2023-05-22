@@ -3,13 +3,18 @@ using UnityEngine.EventSystems;
 
 namespace Festival
 {
-    public class MeteoriteMagic : MonoBehaviour
+    public class MeteoriteMagic : ObjectPool
     {
         [SerializeField] private AimmingMouse _aimming;
         [SerializeField] private Meteorite _meteorite;
 
         private float _heightSpawnMeteorite = 5f;
         private bool _isUsing = false;
+
+        private void Start()
+        {
+            Initialize(_meteorite);
+        }
 
         private void Update()
         {
@@ -39,11 +44,20 @@ namespace Festival
             _isUsing = false;
 
             Vector3 aimCoordinates = _aimming.GetAimCoordinates();
-            Vector3 spawnMeteorite = new Vector3(aimCoordinates.x, aimCoordinates.y + _heightSpawnMeteorite, aimCoordinates.z);
+            Vector3 meteoriteSpawnPoint = new Vector3(aimCoordinates.x, aimCoordinates.y + _heightSpawnMeteorite, aimCoordinates.z);
 
-            Meteorite newMeteorite = Instantiate(_meteorite, spawnMeteorite, Quaternion.identity);
-            newMeteorite.Initialize(_heightSpawnMeteorite);
-            newMeteorite.Fall();
+            if(TryGetObject(out Meteorite meteorite))
+            {
+                SetMeteorite(meteorite, meteoriteSpawnPoint);
+            }
+        }
+
+        private void SetMeteorite(Meteorite meteorite, Vector3 spawnPoint)
+        {
+            meteorite.gameObject.SetActive(true);
+            meteorite.transform.position = spawnPoint;
+            meteorite.Initialize(_heightSpawnMeteorite);
+            meteorite.Fall();
         }
     }
 }
