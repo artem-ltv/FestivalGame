@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,12 +10,20 @@ namespace Festival
 
         [SerializeField] private int _additionalHealth;
         [SerializeField] private ParticleSystem _effect;
-        [SerializeField] private Transform _effectPoint;
+
+        private float _effectDuration = 2f;
 
         public void Heal()
         {
-            Instantiate(_effect, _effectPoint);
+            StartCoroutine(ShowEffect());
             Healing?.Invoke(_additionalHealth);
+        }
+
+        private IEnumerator ShowEffect()
+        {
+            _effect.Play();
+            yield return new WaitForSeconds(_effectDuration);
+            _effect.Stop();
         }
     }
 }
