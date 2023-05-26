@@ -11,19 +11,24 @@ namespace Festival
         [SerializeField] private int _additionalHealth;
         [SerializeField] private ParticleSystem _effect;
 
-        private float _effectDuration = 2f;
+        private float _rechargeTime = 4f;
+        private bool _isHealing = false;
 
         public void Heal()
         {
-            StartCoroutine(ShowEffect());
-            Healing?.Invoke(_additionalHealth);
+            if (!_isHealing)
+            {
+                _isHealing = true;
+                _effect.Play();
+                Healing?.Invoke(_additionalHealth);
+                StartCoroutine(Recharge());
+            }
         }
 
-        private IEnumerator ShowEffect()
+        private IEnumerator Recharge()
         {
-            _effect.Play();
-            yield return new WaitForSeconds(_effectDuration);
-            _effect.Stop();
+            yield return new WaitForSeconds(_rechargeTime);
+            _isHealing = false;
         }
     }
 }
