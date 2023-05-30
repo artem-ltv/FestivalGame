@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8499816397386072361}
   - component: {fileID: 8499816397386072362}
   - component: {fileID: 8499816397386072373}
+  - component: {fileID: 3978284945664167924}
   m_Layer: 0
   m_Name: Meteorite
   m_TagString: Untagged
@@ -111,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ec3210ce42eced448e7486c9639f668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fallTime: 2
+  _fallTime: 3
 --- !u!114 &8499816397386072373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,3 +125,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c586cbaba0fcb498e02679478f669f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &3978284945664167924
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8499816397386072363}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
