@@ -26,11 +26,6 @@ namespace Festival
             _rigidbody.velocity = Vector3.ClampMagnitude(direction, 1) * _moveSpeed;
         }
 
-        public void Jump()
-        {
-            _rigidbody.velocity = new Vector3(0f, _jumpForce, 0f);
-        }
-
         public void Stop()
         {
             _rigidbody.velocity = Vector3.zero;
