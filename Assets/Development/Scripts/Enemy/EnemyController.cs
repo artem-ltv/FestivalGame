@@ -3,24 +3,46 @@ using UnityEngine;
 namespace Festival
 {
     [RequireComponent(typeof(EnemyMovement))]
-    public class EnemyController : MonoBehaviour
+    [RequireComponent(typeof(EnemyAttacker))]
+    public abstract class EnemyController : MonoBehaviour
     {
-        [SerializeField] private Player _player;
-        [SerializeField] private float _minDistanceFromPlayer;
+        [SerializeField] protected Player Player;
+        [SerializeField] protected float MinDistanceFromPlayer;
+        [SerializeField] protected float DistanceForAttack;
+        [SerializeField] private EnemyMovement _enemyMovement;
 
-        private EnemyMovement _enemyMovement;
+        private EnemyAttacker _enemyAttacker;
 
         private void Start()
         {
+            _enemyAttacker = GetComponent<EnemyAttacker>();
             _enemyMovement = GetComponent<EnemyMovement>();
         }
 
         private void Update()
         {
-            if(Vector3.Distance(transform.position, _player.transform.position) < _minDistanceFromPlayer)
+            float distanceBetweenPlayer = Vector3.Distance(transform.position, Player.transform.position);
+
+            if (distanceBetweenPlayer < MinDistanceFromPlayer && distanceBetweenPlayer > DistanceForAttack)
             {
-                _enemyMovement.Follow(_player);
+                FollowPlayer();
             }
+
+            if(distanceBetweenPlayer <= DistanceForAttack)
+            {
+                AttackPlayer();
+            }
+        }
+
+        protected virtual void FollowPlayer()
+        {
+            _enemyMovement.Follow(Player);
+        }
+
+        protected virtual void AttackPlayer()
+        {
+            _enemyMovement.Stop();
+            _enemyAttacker.Attack();
         }
     }
 }

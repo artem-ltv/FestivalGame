@@ -4,9 +4,9 @@ using UnityEngine.AI;
 namespace Festival
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public class EnemyMovement : MonoBehaviour
+    public abstract class EnemyMovement : MonoBehaviour
     {
-        private NavMeshAgent _navMeshAgent;
+        protected NavMeshAgent _navMeshAgent;
 
         private void Start()
         {
@@ -15,7 +15,13 @@ namespace Festival
         
         public void Follow(Player player)
         {
+            _navMeshAgent.enabled = true;
             _navMeshAgent.SetDestination(player.transform.position);
+        }
+
+        public void Stop()
+        {
+            _navMeshAgent.enabled = false;
         }
     }
 }
