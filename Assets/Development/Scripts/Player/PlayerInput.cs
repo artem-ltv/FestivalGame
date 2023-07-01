@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Festival
 {
     [RequireComponent(typeof(PlayerMovement))]
-    public class PlayerController : MonoBehaviour
+    public class PlayerInput : MonoBehaviour
     {
         private PlayerMovement _playerMovement;
 
