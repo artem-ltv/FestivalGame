@@ -7,12 +7,16 @@ namespace Festival
         [SerializeField] private float _health;
         [SerializeField] private float _damage;
 
-        private void Attack()
+        private void AddDamage(int damage)
         {
-
+            _health -= damage;
+            if(_health <= 0)
+            {
+                Die();
+            }
         }
 
-        private void AddDamage()
+        private void Die()
         {
 
         }

@@ -26,7 +26,7 @@ namespace Festival
             UpdateHealthUI();
         }
 
-        private void AddDamage(int damage)
+        public void AddDamage(int damage)
         {
             _health -= damage;
             if(_health <= 0)
