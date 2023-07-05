@@ -6,6 +6,7 @@ namespace Festival
     public class Meteorite : MonoBehaviour
     {
         [SerializeField] private float _fallTime;
+        [SerializeField] private ParticleSystem _explosionEffect;
 
         private float _fallEndPoint;
 
@@ -21,7 +22,7 @@ namespace Festival
 
         public void Explode()
         {
-            Debug.Log("Explode");
+            Instantiate(_explosionEffect, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
         }
     }
