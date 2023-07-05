@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Festival
 {
-    public class Enemy : MonoBehaviour
+    public class Skeleton : MonoBehaviour
     {
         [SerializeField] private float _health;
         [SerializeField] private float _damage;
