@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6349305087729841541}
   - component: {fileID: 6349305087729841542}
   - component: {fileID: 1619584295}
+  - component: {fileID: 1664807696}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -84,6 +85,20 @@ CapsuleCollider:
   m_Height: 0.88
   m_Direction: 2
   m_Center: {x: 0, y: 0.24, z: -0}
+--- !u!114 &1664807696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6349305087729841536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223caa151fe3c3646af1202c98f48190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 20
+  Damage: 10
 --- !u!1001 &6349305086735392922
 PrefabInstance:
   m_ObjectHideFlags: 0

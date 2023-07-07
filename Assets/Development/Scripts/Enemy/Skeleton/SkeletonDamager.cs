@@ -4,7 +4,12 @@ namespace Festival
 {
     public class SkeletonDamager : MonoBehaviour
     {
-        [SerializeField] private int _damage;
+        private int _damage;
+
+        public void SetDamage(int damage)
+        {
+            _damage = damage;
+        }
 
         private void OnTriggerEnter(Collider other)
         {

@@ -21,5 +21,9 @@ namespace Festival
         }
 
         protected abstract void Move();
+        public virtual void Stop()
+        {
+            NavMeshAgent.enabled = false;
+        }
     }
 }

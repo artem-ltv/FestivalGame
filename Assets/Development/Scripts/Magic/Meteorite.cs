@@ -3,12 +3,21 @@ using DG.Tweening;
 
 namespace Festival
 {
+    [RequireComponent(typeof(MeteoriteCollisionHandler))]
     public class Meteorite : MonoBehaviour
     {
         [SerializeField] private float _fallTime;
         [SerializeField] private ParticleSystem _explosionEffect;
+        [SerializeField] private int _damage;
 
+        private MeteoriteCollisionHandler _collisionHandler;
         private float _fallEndPoint;
+
+        private void Start()
+        {
+            _collisionHandler = GetComponent<MeteoriteCollisionHandler>();
+            _collisionHandler.SetDamage(_damage);
+        }
 
         public void Initialize(float fallEndPoint)
         {

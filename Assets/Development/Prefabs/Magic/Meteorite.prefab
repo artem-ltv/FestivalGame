@@ -114,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fallTime: 1.5
   _explosionEffect: {fileID: 198000012942003240, guid: ecdd96beb7f93494880c052dfccf9dc1, type: 3}
+  _damage: 200
 --- !u!114 &8499816397386072373
 MonoBehaviour:
   m_ObjectHideFlags: 0

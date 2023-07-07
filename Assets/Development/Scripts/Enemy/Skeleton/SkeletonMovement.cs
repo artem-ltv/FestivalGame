@@ -17,14 +17,14 @@ namespace Festival
 
             if (distanceFromPlayer > _distanceForFollow)
             {
-                NavMeshAgent.enabled = false;
+                Stop();
                 _animatorController.ActivateWalk(false);
                 _animatorController.ActivateAttack(false);
             }
 
             if (distanceFromPlayer <= _distanceForAttack)
             {
-                NavMeshAgent.enabled = false;
+                Stop();
                 _animatorController.ActivateAttack(true);
             }
 
