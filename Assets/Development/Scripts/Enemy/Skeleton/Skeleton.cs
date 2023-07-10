@@ -6,7 +6,7 @@ namespace Festival
     [RequireComponent(typeof(SkeletonMovement))]
     public class Skeleton : Enemy
     {
-        [SerializeField] private SkeletonDamager _damager;
+        [SerializeField] private Damager _damager;
 
         private SkeletonAnimatorController _animatorController;
         private SkeletonMovement _movement;
@@ -23,7 +23,6 @@ namespace Festival
         public override void AddDamage(int damage)
         {
             base.AddDamage(damage);
-            Debug.Log($"Health Skeleton: {Health}");
         }
 
         protected override void Die()

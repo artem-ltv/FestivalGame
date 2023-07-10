@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Festival
 {
-    public class SkeletonDamager : MonoBehaviour
+    public class Damager : MonoBehaviour
     {
+        public UnityAction Damaging;
+
         private int _damage;
 
         public void SetDamage(int damage)
@@ -11,12 +14,13 @@ namespace Festival
             _damage = damage;
         }
 
-        private void OnTriggerEnter(Collider other)
+        protected virtual void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.TryGetComponent(out Player player))
             {
                 if (player.TryGetComponent(out PlayerHealth playerHealth))
                 {
+                    Damaging?.Invoke();
                     playerHealth.AddDamage(_damage);
                 }
             }
