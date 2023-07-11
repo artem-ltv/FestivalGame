@@ -3,13 +3,16 @@ using UnityEngine;
 namespace Festival
 {
     [RequireComponent(typeof(PlayerMovement))]
+    [RequireComponent(typeof(PlayerAnimatorController))]
     public class PlayerInput : MonoBehaviour
     {
         private PlayerMovement _playerMovement;
+        private PlayerAnimatorController _animatorController;
 
         private void Start()
         {
             _playerMovement = GetComponent<PlayerMovement>();
+            _animatorController = GetComponent<PlayerAnimatorController>();
         }
 
         private void Update()
@@ -28,6 +31,8 @@ namespace Festival
             {
                 _playerMovement.Stop();
             }
+
+            _animatorController.ActivateRun(Mathf.Abs(horizontal + vertical));
         }
     }
 }
