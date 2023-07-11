@@ -8,8 +8,8 @@ namespace Festival
     {
         [SerializeField] private float _distanceForFollow;
         [SerializeField] private float _distanceForAttack;
-
         [SerializeField] private SkeletonAnimatorController _animatorController;
+
 
         protected override void Move()
         {
@@ -17,14 +17,14 @@ namespace Festival
 
             if (distanceFromPlayer > _distanceForFollow)
             {
-                Stop();
+                NavMeshAgent.enabled = false;
                 _animatorController.ActivateWalk(false);
                 _animatorController.ActivateAttack(false);
             }
 
             if (distanceFromPlayer <= _distanceForAttack)
             {
-                Stop();
+                NavMeshAgent.enabled = false;
                 _animatorController.ActivateAttack(true);
             }
 
@@ -35,6 +35,12 @@ namespace Festival
                 _animatorController.ActivateWalk(true);
                 NavMeshAgent.SetDestination(Player.transform.position);
             }
+        }
+
+        public override void Stop()
+        {
+            _animatorController.ActivateAttack(false);
+            _animatorController.ActivateWalk(false);
         }
     }
 }

@@ -1,14 +1,19 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Festival
 {
+    [RequireComponent(typeof(PlayerAnimatorController))]
     public class PlayerHealth : MonoBehaviour
     {
+        public UnityAction Dying;
+
         [SerializeField] private int _health;
         [SerializeField] private HealingMagic _healingMagic;
         [SerializeField] private TMP_Text _healthUI;
 
+        private PlayerAnimatorController _animatorController;
         private int _maxHealth = 100;
 
         private void OnEnable()
@@ -24,6 +29,7 @@ namespace Festival
         private void Start()
         {
             UpdateHealthUI();
+            _animatorController = GetComponent<PlayerAnimatorController>();
         }
 
         public void AddDamage(int damage)
@@ -51,7 +57,8 @@ namespace Festival
 
         private void Die()
         {
-            Debug.Log("Player died");
+            _animatorController.ActivateDeath();
+            Dying?.Invoke();
         }
 
         private void UpdateHealthUI()

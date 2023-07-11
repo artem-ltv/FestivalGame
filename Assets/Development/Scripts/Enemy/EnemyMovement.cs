@@ -9,6 +9,7 @@ namespace Festival
         [SerializeField] protected Player Player;
 
         protected NavMeshAgent NavMeshAgent;
+        protected bool CanMove = true;
 
         private void Start()
         {
@@ -17,13 +18,25 @@ namespace Festival
 
         private void Update()
         {
-            Move();
+            if (CanMove)
+            {
+                Move();
+            }
         }
 
         protected abstract void Move();
-        public virtual void Stop()
+        public virtual void Stop() 
         {
             NavMeshAgent.enabled = false;
+        }
+
+        public void SetAbilityMove(bool canMove)
+        {
+            CanMove = canMove;
+            if(canMove == false)
+            {
+                Stop();
+            }
         }
     }
 }

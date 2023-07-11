@@ -20,11 +20,6 @@ namespace Festival
             _damager.SetDamage(Damage);
         }
 
-        public override void AddDamage(int damage)
-        {
-            base.AddDamage(damage);
-        }
-
         protected override void Die()
         {
             _movement.Stop();
