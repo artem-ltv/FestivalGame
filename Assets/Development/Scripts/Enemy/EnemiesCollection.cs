@@ -19,12 +19,30 @@ namespace Festival
             _playerHealth.Dying -= DisableEnemies;
         }
 
+        public void AddSpider(Spider spider)
+        {
+            _spiders.Add(spider);
+        }
+
         private void DisableEnemies()
         {
             foreach(var skeleton in _skeletons)
             {
-                skeleton.gameObject.TryGetComponent(out SkeletonMovement movement);
-                movement.SetAbilityMove(false);
+                if(skeleton.gameObject.TryGetComponent(out SkeletonMovement skeletonMovement))
+                {
+                    skeletonMovement.SetAbilityMove(false);
+                }
+            }
+
+            foreach(var spider in _spiders)
+            {
+                if(spider != null)
+                {
+                    if(spider.gameObject.TryGetComponent(out SpiderMovement spiderMovement))
+                    {
+                        spiderMovement.SetAbilityMove(false);
+                    }
+                }
             }
         }
     }

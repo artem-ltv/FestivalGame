@@ -30,6 +30,14 @@ namespace Festival
             NavMeshAgent.enabled = false;
         }
 
+        public void SetPlayer(Player player)
+        {
+            if(Player == null)
+            {
+                Player = player;
+            }
+        }
+
         public void SetAbilityMove(bool canMove)
         {
             CanMove = canMove;

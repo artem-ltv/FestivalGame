@@ -11,7 +11,7 @@ namespace Festival
 
         private Vector3 _targetPosition;
 
-        private void Update()
+        private void LateUpdate()
         {
             _targetPosition = new Vector3(_player.transform.position.x + _offsetX, transform.position.y, _player.transform.position.z + _offsetZ);
             transform.position = Vector3.Lerp(transform.position, _targetPosition, _cameraSpeed * Time.deltaTime);
