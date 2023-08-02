@@ -16,13 +16,10 @@ namespace Festival
 
         protected virtual void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.TryGetComponent(out Player player))
+            if (other.TryGetComponent(out PlayerHealth playerHealth))
             {
-                if (player.TryGetComponent(out PlayerHealth playerHealth))
-                {
-                    Damaging?.Invoke();
-                    playerHealth.AddDamage(_damage);
-                }
+                Damaging?.Invoke();
+                playerHealth.AddDamage(_damage);
             }
         }
     }

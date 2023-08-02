@@ -23,11 +23,6 @@ namespace Festival
             _damager.Damaging -= Die;
         }
 
-        public override void AddDamage(int damage)
-        {
-            base.AddDamage(damage);
-        }
-
         protected override void Die()
         {
             Destroy(gameObject);
