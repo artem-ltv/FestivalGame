@@ -6,6 +6,8 @@ namespace Festival
     [RequireComponent(typeof(PlayerAnimatorController))]
     public class PlayerInput : MonoBehaviour
     {
+        [SerializeField] private Pause _pause;
+
         private PlayerMovement _playerMovement;
         private PlayerAnimatorController _animatorController;
 
@@ -33,6 +35,11 @@ namespace Festival
             }
 
             _animatorController.ActivateRun(Mathf.Abs(horizontal + vertical));
+
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                _pause.Show();
+            }
         }
     }
 }
