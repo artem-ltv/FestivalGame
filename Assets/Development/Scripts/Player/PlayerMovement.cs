@@ -7,6 +7,7 @@ namespace Festival
     {
         [SerializeField] private float _moveSpeed;
         [SerializeField] private float _rotateSpeed;
+        [SerializeField] private float _jumpForce;
 
         private Rigidbody _rigidbody;
 
@@ -23,6 +24,11 @@ namespace Festival
         public void Rotate(Vector3 direction)
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * _rotateSpeed);
+        }
+
+        public void Jump()
+        {
+            _rigidbody.AddForce((_rigidbody.velocity + Vector3.up) * _jumpForce);
         }
 
         public void Stop()
