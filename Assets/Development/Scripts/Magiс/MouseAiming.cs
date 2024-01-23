@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Festival
 {
-    public class Aiming : MonoBehaviour
+    public class MouseAiming : MonoBehaviour
     {
         public bool IsAiming => _isVisible;
 

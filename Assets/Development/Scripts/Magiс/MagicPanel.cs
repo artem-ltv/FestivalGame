@@ -6,7 +6,7 @@ namespace Festival
     public class MagicPanel : MonoBehaviour
     {
         [SerializeField] private Button _createMeteorite;
-        [SerializeField] private Aiming _aiming;
+        [SerializeField] private MouseAiming _aiming;
 
         private void Start()
         {

@@ -5,7 +5,7 @@ namespace Festival
 {
     public class MeteoriteMagic : MonoBehaviour
     {
-        [SerializeField] private Aiming _aiming;
+        [SerializeField] private MouseAiming _aiming;
         [SerializeField] private Meteorite _meteorite;
 
         private float _spawnHeight = 5f;
@@ -16,13 +16,13 @@ namespace Festival
             {
                 if(Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
                 {
-                    CreateMeteorite();
+                    Create();
                     _aiming.SetVisibility(false);
                 }
             }
         }
 
-        public void CreateMeteorite()
+        private void Create()
         {
             Vector3 creationPoint = _aiming.GetHitCoordinates();
             creationPoint.y += _spawnHeight;
