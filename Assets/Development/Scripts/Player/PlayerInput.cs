@@ -19,6 +19,15 @@ namespace Festival
 
             Vector3 direction = new Vector3(horizontal, 0, vertical);
 
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                _movement.Speeding(true);
+            }
+            else
+            {
+                _movement.Speeding(false);
+            }
+
             if(direction != Vector3.zero)
             {
                 _movement.Move(direction);

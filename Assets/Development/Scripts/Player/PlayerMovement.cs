@@ -5,15 +5,17 @@ namespace Festival
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private float _moveSpeed;
+        [SerializeField] private float _moveSpeedStart;
+        [SerializeField] private float _moveSpeeding;
         [SerializeField] private float _rotateSpeed;
-        [SerializeField] private float _jumpForce;
 
         private Rigidbody _rigidbody;
+        private float _moveSpeed;
 
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _moveSpeed = _moveSpeedStart;
         }
 
         public void Move(Vector3 direction)
@@ -26,15 +28,22 @@ namespace Festival
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * _rotateSpeed);
         }
 
-        public void Jump()
-        {
-            _rigidbody.AddForce((_rigidbody.velocity + Vector3.up) * _jumpForce);
-        }
-
         public void Stop()
         {
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.angularVelocity = Vector3.zero;
+        }
+
+        public void Speeding(bool isSpeeding)
+        {
+            if (isSpeeding)
+            {
+                _moveSpeed = _moveSpeeding;
+            }
+            else
+            {
+                _moveSpeed = _moveSpeedStart;
+            }
         }
     }
 }
