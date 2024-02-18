@@ -8,9 +8,11 @@ namespace Festival
         [SerializeField] private float _moveSpeedStart;
         [SerializeField] private float _moveSpeeding;
         [SerializeField] private float _rotateSpeed;
+        [SerializeField] private PlayerHealth _playerHealth;
 
         private Rigidbody _rigidbody;
         private float _moveSpeed;
+        private int _accelerationDamage = 1;
 
         private void Start()
         {
@@ -39,6 +41,7 @@ namespace Festival
             if (isSpeeding)
             {
                 _moveSpeed = _moveSpeeding;
+                _playerHealth.AddDamage(_accelerationDamage);
             }
             else
             {
