@@ -22,6 +22,11 @@ namespace Festival
             }
         }
 
+        public void Aim()
+        {
+            _aiming.SetVisibility(true);
+        }
+
         private void Create()
         {
             Vector3 creationPoint = _aiming.GetHitCoordinates();
